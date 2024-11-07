@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import styled from 'styled-components'
 
 export default function Blackboard() {
+  const [text, setText] = useState<string>("")
+  const onChangeText = (e:ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value)
+  } 
   return (
     <Wrapper>
         <Header> 디지털 칠판 </Header>
         <Section>
-          <BoardView></BoardView>
-          <BoardInput placeholder='입력해주세요.'/>
+          <BoardView>{text}</BoardView>
+          <BoardInput placeholder='입력해주세요.' onChange={onChangeText}/>
         </Section>
     </Wrapper>
  
